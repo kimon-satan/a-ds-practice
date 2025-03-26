@@ -26,18 +26,18 @@ export function binarySearch(sortedList, searchValue, startingIndex = 0) {
 
 export function binarySearchLoop(sortedList, searchValue) {
   let start = 0;
-  let finish = sortedList.length;
+  let finish = sortedList.length - 1;
 
-  while (finish > start) {
+  while (finish >= start) {
     const middle = Math.floor((finish - start) / 2) + start;
 
     if (sortedList[middle] == searchValue) {
       return middle;
     }
     if (searchValue < sortedList[middle]) {
-      finish = middle; // don't decrement here (we floor middle so we risk skipping a value)
+      finish = middle - 1;
     } else {
-      start = middle + 1; // increment here so that the loop will eventually terminate
+      start = middle + 1;
     }
   }
   return -1;
