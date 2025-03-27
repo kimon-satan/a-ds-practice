@@ -1,4 +1,4 @@
-//https://www.geeksforgeeks.org/quick-sort-algorithm/
+2; //https://www.geeksforgeeks.org/quick-sort-algorithm/
 
 export function quickSort(inputArray) {
   // choose a pivot
@@ -28,22 +28,37 @@ export function quickSort(inputArray) {
 
 export function swap(arr, i, j) {
   const temp = arr[j];
+  if (temp === undefined) {
+    throw new Error(`temp undefined at ${j} for ${arr}`);
+  }
   arr[j] = arr[i];
   arr[i] = temp;
 }
 
-export function lomuto(inputArray) {
-  let p = inputArray.length - 1;
-  let i = 0;
-  for (let j = 0; j < inputArray.length; j++) {
-    if (inputArray[j] <= inputArray[p]) {
+export function lomuto(inputArray, lo = 0, hi) {
+  const pivot = inputArray[hi];
+  let i = lo;
+  for (let j = lo; j < hi; j++) {
+    if (inputArray[j] < pivot) {
+      // the wikipedia psuedocode does <= but this can't handle multiple pivot values
       swap(inputArray, i, j);
       i++;
     }
   }
-  swap(inputArray, i, p);
+  swap(inputArray, i, hi);
+  return i;
 }
 
-export function quickSortLomuto(inputArray) {
-  // TODO finish this using lomuto
+export function quickSortLomuto(inputArray, lo = 0, hi) {
+  if (hi === undefined) {
+    hi = inputArray.length - 1;
+  }
+
+  if (lo >= hi) {
+    return;
+  }
+
+  const pi = lomuto(inputArray, lo, hi);
+  quickSortLomuto(inputArray, lo, pi - 1);
+  quickSortLomuto(inputArray, pi + 1, hi); // NB. we need to increment here to avoid infinite loops
 }
