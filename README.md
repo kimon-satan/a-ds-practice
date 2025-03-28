@@ -5,7 +5,7 @@ Are you preparing for coding interviews?
 Here’s a list of the 20 most important algorithms you must master to ace your interviews!
 
 👉 Searching & Sorting Algorithms
-• Examples: Binary Search ✅ , Merge Sort ✅, Quick Sort
+• Examples: Binary Search ✅ , Merge Sort ✅, Quick Sort ✅ , Lomuto Partition✅ , Hoares Partition
 • 🔍 Foundation of efficient data retrieval and ordering
 
 👉 Graph Algorithms
