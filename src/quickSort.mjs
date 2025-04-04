@@ -37,7 +37,7 @@ export function swap(arr, i, j) {
 
 export function lomuto(inputArray, lo = 0, hi) {
   const pivot = inputArray[hi];
-  let i = lo;
+  let i = lo; // i tracks the last swapped index
   for (let j = lo; j < hi; j++) {
     if (inputArray[j] < pivot) {
       // the wikipedia psuedocode does <= but this can't handle multiple pivot values
@@ -45,8 +45,8 @@ export function lomuto(inputArray, lo = 0, hi) {
       i++;
     }
   }
-  swap(inputArray, i, hi);
-  return i;
+  swap(inputArray, i, hi); // finally put the pivot in place
+  return i; // return the pivot index
 }
 
 export function quickSortLomuto(inputArray, lo = 0, hi) {

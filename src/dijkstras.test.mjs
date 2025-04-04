@@ -15,6 +15,8 @@ describe("dijkstras", () => {
   ];
 
   it("runs", () => {
-    dijkstras({ graph, src: 0 });
+    const { dist, parents } = dijkstras({ graph, src: 0 });
+    expect(dist).toEqual([0, 4, 12, 19, 21, 11, 9, 8, 14]);
+    expect(parents).toEqual([undefined, 0, 1, 2, 5, 6, 7, 0, 2]);
   });
 });
