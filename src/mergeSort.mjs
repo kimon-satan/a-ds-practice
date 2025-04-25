@@ -1,3 +1,6 @@
+//TODO: In place https://www.geeksforgeeks.org/in-place-merge-sort/?ref=header_outind
+
+// NB. merge is not the same as partition as the subarrays must be sorted in the first place !
 export function merge(L, R) {
   const tL = [...L];
   const tR = [...R];
@@ -22,5 +25,26 @@ export function mergeSort(inputArray) {
     const left = mergeSort(inputArray.slice(0, middle));
     const right = mergeSort(inputArray.slice(middle));
     return merge(left, right);
+  }
+}
+
+export function mergeInPlace(arr, lo, mid, hi) {
+  let l = lo;
+  let r = mid + 1;
+  while (l <= mid && r <= hi) {
+    if (arr[l] <= arr[r]) {
+      l++;
+    } else {
+      const v = arr[r];
+      let i = r;
+      while (i != l) {
+        arr[i] = arr[i - 1];
+        i--;
+      }
+      arr[l] = v;
+      l++;
+      r++;
+      mid++;
+    }
   }
 }
